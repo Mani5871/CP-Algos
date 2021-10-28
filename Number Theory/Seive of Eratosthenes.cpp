@@ -7,23 +7,24 @@ public:
         bool arr[n + 1];
         for(i = 0; i < n + 1; i ++)
             arr[i] = true;
-            
+
         arr[0] = arr[1] = false;
-        
-        for(i = 2; i <= n; i ++)
+
+        for(i = 2; i * i <= n; i ++)
         {
             if(arr[i] == false)
                 continue;
-                
-            for(j = i + i; j <= n; j += i)
+
+            for(j = i * i; j <= n; j += i)
                 arr[j] = false;
         }
-        
+
         vector <int> res;
         for(i = 2; i < n + 1; i ++)
             if(arr[i] == true)
                 res.push_back(i);
-                
-        return res;
+
+        for(auto it : res)
+            cout << it << " ";
     }
 };
